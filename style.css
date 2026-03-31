@@ -8,6 +8,7 @@
     --accent-glow: #38bdf8; /* Neon blauwe accentkleur */
 }
 
+/* Basis reset voor een schone lei */
 * {
     margin: 0;
     padding: 0;
@@ -38,6 +39,12 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.app-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* Het Grid Systeem */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -57,9 +64,10 @@ body {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 }
 
+/* Zweef-effect met subtiele neon gloed */
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.1); /* Subtiele neon gloed on hover */
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.1); 
     border-color: rgba(56, 189, 248, 0.3);
 }
 
@@ -69,8 +77,62 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.card p {
+/* Styling voor de categorie-label (badge) bovenin de kaart */
+.card-badge {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent-glow);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+/* Subtitels en tekst binnen de kaart */
+.sectie-titel {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin: 16px 0 8px 0;
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 4px;
+}
+
+.doelspier {
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+}
+
+/* De genummerde lijst voor de uitvoering */
+.uitvoering-lijst {
+    padding-left: 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.uitvoering-lijst li {
+    margin-bottom: 4px;
+}
+
+/* Tip en Veiligheidsblokken voor onze jonge sporters */
+.pro-tip, .safe-form {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
     line-height: 1.5;
+}
+
+.pro-tip {
+    background: rgba(52, 211, 153, 0.1); /* Zacht groen */
+    color: #a7f3d0;
+    border-left: 3px solid #34d399;
+}
+
+.safe-form {
+    background: rgba(248, 113, 113, 0.1); /* Zacht rood */
+    color: #fecaca;
+    border-left: 3px solid #f87171;
 }
