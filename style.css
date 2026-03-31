@@ -1,57 +1,76 @@
-/* Basis reset voor een schone lei */
+/* 2026 CSS Variabelen voor een modern thema */
+:root {
+    --bg-color: #0f172a; /* Diep, modern donkerblauw */
+    --card-bg: rgba(255, 255, 255, 0.05); /* Semi-transparant voor Glass-effect */
+    --card-border: rgba(255, 255, 255, 0.1);
+    --text-main: #f8fafc; /* Kraakhelder wit */
+    --text-muted: #94a3b8; /* Zacht grijs voor beschrijvingen */
+    --accent-glow: #38bdf8; /* Neon blauwe accentkleur */
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Achtergrond en tekstkleur van de app */
 body {
-    background-color: #f8f9fa; /* Zacht, rustig lichtgrijs */
-    color: #333333; /* Donkergrijs voor goede leesbaarheid (niet hard zwart) */
-    padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    /* Een subtiele gloed in de achtergrond voor diepte */
+    background-image: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.15), transparent 50%);
 }
 
-/* Stijl voor de header (veel witruimte) */
 .app-header {
     text-align: center;
-    margin-bottom: 40px;
-    margin-top: 20px;
+    margin-bottom: 3rem;
 }
 
+/* Fluid typography: past zich perfect aan de schermgrootte aan via clamp() */
 .app-header h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
+    font-size: clamp(2rem, 5vw, 4rem);
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    color: transparent; /* Zorgt dat de tekst de gradiënt krijgt */
+    margin-bottom: 0.5rem;
 }
 
-/* Het Grid Systeem: Past zich automatisch aan het scherm aan */
 .grid-container {
     display: grid;
-    /* Op mobiel 1 kolom, op bredere schermen (zoals tablets) meerdere kolommen */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px; /* Ruimte tussen de kaarten */
-    max-width: 900px;
-    margin: 0 auto; /* Centreer het grid in het midden van het scherm */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Stijl voor de categorie kaarten */
+/* Glassmorphism Kaart Styling */
 .card {
-    background-color: #ffffff;
-    border-radius: 12px; /* Mooie ronde hoekjes */
-    padding: 24px;
-    /* Subtiele schaduw voor een modern, zwevend effect */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); 
-    transition: transform 0.2s ease; /* Zorgt voor een soepele animatie */
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    backdrop-filter: blur(12px); /* Dit maakt de achtergrond erachter 'matglas' */
+    -webkit-backdrop-filter: blur(12px); /* Voor Safari ondersteuning */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 }
 
-/* Laat de kaart iets omhoog komen als je er met de muis overheen gaat */
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.1); /* Subtiele neon gloed on hover */
+    border-color: rgba(56, 189, 248, 0.3);
 }
 
 .card h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #3498db; /* Frisse, sportieve blauwe accentkleur */
+    font-size: 1.25rem;
+    color: var(--accent-glow);
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
